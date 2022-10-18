@@ -1,0 +1,132 @@
+{
+	"info": {
+		"_postman_id": "81a5972f-414d-46e9-b424-2fa2c26bb04e",
+		"name": "SurveyNestjs",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "12551048"
+	},
+	"item": [
+		{
+			"name": "Empresa",
+			"item": [
+				{
+					"name": "GetListaEmpresas",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{HOST}}/empresa",
+							"host": [
+								"{{HOST}}"
+							],
+							"path": [
+								"empresa"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "GetEmpresaById",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{HOST}}/empresa/:id",
+							"host": [
+								"{{HOST}}"
+							],
+							"path": [
+								"empresa",
+								":id"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "1e38d47c-2df0-4860-addc-3efce192790d"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "CreateEmpresa",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n        \"nome\": \"Empresa de Teste1\",\n        \"cnpj\": \"24515665000104\"\n    }",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{HOST}}/empresa",
+							"host": [
+								"{{HOST}}"
+							],
+							"path": [
+								"empresa"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "UpdateEmpresa",
+					"request": {
+						"method": "PATCH",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"id\": \"53580ea0-b9e3-4da4-8a8c-b7bbebdaf412\",\n    \"nome\": \"Empresa de Teste2\",\n    \"cnpj\": \"24515665000105\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{HOST}}/empresa",
+							"host": [
+								"{{HOST}}"
+							],
+							"path": [
+								"empresa"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "removeEmpresa",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{HOST}}/empresa/:id",
+							"host": [
+								"{{HOST}}"
+							],
+							"path": [
+								"empresa",
+								":id"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "53580ea0-b9e3-4da4-8a8c-b7bbebdaf412"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}
