@@ -28,23 +28,23 @@ class _LoginPageState extends State<LoginPage> {
         }
       });
 
-      Alert(
-        context: context,
-        title: "ERROR",
-        desc: message,
-        image: const Icon(Icons.error_rounded),
-        buttons: [
-          DialogButton(
-            // ignore: sort_child_properties_last
-            child: const Text(
-              'Close',
-              style: TextStyle(color: Colors.white, fontSize: 20),
-            ),
-            onPressed: () => Navigator.pop(context),
-            width: 120,
-          )
-        ],
-      ).show();
+      // Alert(
+      //   context: context,
+      //   title: "ERROR",
+      //   desc: message,
+      //   image: const Icon(Icons.error_rounded),
+      //   buttons: [
+      //     DialogButton(
+      //       // ignore: sort_child_properties_last
+      //       child: const Text(
+      //         'Close',
+      //         style: TextStyle(color: Colors.white, fontSize: 20),
+      //       ),
+      //       onPressed: () => Navigator.pop(context),
+      //       width: 120,
+      //     )
+      //   ],
+      // ).show();
     });
   }
 

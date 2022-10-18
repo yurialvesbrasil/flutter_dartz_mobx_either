@@ -15,7 +15,7 @@ class LoginRepositoryImpl extends LoginRepository {
     try {
       final response = await Dio().post('http://localhost:3000/login',
           data: {'login': login, 'password': password});
-      return right('token');
+      return right(response.data['token']);
     } on DioError catch (e) {
       if (e.response?.statusCode == 403) {
         return left(LoginNotFoundFailure());

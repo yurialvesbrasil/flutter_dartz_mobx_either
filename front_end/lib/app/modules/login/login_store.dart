@@ -31,7 +31,9 @@ abstract class _LoginStoreBase with Store {
     final loginResult = await _repository.login(
         login: loginContoller.text, password: passwordController.text);
 
-    loginResult.fold((l) {
+    loginResult.fold((l) async {
+      SharedPreferences sp = await SharedPreferences.getInstance();
+      sp.remove('access_token');
       failure = optionOf(l);
       loading = false;
     }, (r) async {

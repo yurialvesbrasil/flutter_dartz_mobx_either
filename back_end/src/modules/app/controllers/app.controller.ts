@@ -3,12 +3,10 @@ import {
   Controller,
   Get,
   HttpCode,
-  HttpException,
   HttpStatus,
   Post,
 } from '@nestjs/common';
 import { ApiOperation, ApiBody, ApiResponse } from '@nestjs/swagger';
-import { LoginServerErrorFailure } from 'src/exceptions/login_failure';
 import { LoginRequestAuthDto } from '../dto/login-request-auth.dto';
 import { AppService } from '../services/app.service';
 
@@ -23,7 +21,7 @@ export class AppController {
   @Post('login')
   @HttpCode(HttpStatus.OK)
   @ApiResponse({
-    status: HttpStatus.UNAUTHORIZED,
+    status: HttpStatus.FORBIDDEN,
     description: 'Login e/ou senha inválidos',
   })
   //@UseGuards(LocalAuthGuard) //Verifica token de jwt
