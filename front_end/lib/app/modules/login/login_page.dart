@@ -13,7 +13,8 @@ class LoginPage extends StatefulWidget {
 }
 
 class _LoginPageState extends State<LoginPage> {
-  final LoginStore store = Modular.get();
+  final LoginStore store = Modular.get<LoginStore>();
+  bool isAlertOpen = false;
 
   @override
   void initState() {
@@ -26,25 +27,36 @@ class _LoginPageState extends State<LoginPage> {
         } else {
           message = 'Erro ao realizar login';
         }
-      });
 
-      // Alert(
-      //   context: context,
-      //   title: "ERROR",
-      //   desc: message,
-      //   image: const Icon(Icons.error_rounded),
-      //   buttons: [
-      //     DialogButton(
-      //       // ignore: sort_child_properties_last
-      //       child: const Text(
-      //         'Close',
-      //         style: TextStyle(color: Colors.white, fontSize: 20),
-      //       ),
-      //       onPressed: () => Navigator.pop(context),
-      //       width: 120,
-      //     )
-      //   ],
-      // ).show();
+        //Lança alerta de erro
+        if (!isAlertOpen) {
+          setState(() {
+            isAlertOpen = true;
+          });
+          Alert(
+            context: context,
+            title: "ERROR",
+            desc: message,
+            image: const Icon(Icons.error_rounded),
+            buttons: [
+              DialogButton(
+                // ignore: sort_child_properties_last
+                child: const Text(
+                  'Close',
+                  style: TextStyle(color: Colors.white, fontSize: 20),
+                ),
+                onPressed: () {
+                  Navigator.pop(context);
+                  setState(() {
+                    isAlertOpen = false;
+                  });
+                },
+                width: 120,
+              )
+            ],
+          ).show();
+        }
+      });
     });
   }
 

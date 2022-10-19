@@ -13,12 +13,12 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
-  late final HomeStore store;
+  final HomeStore homeStore = Modular.get<HomeStore>();
 
   @override
   void initState() {
     super.initState();
-    store = Modular.get<HomeStore>();
+
     SharedPreferences.getInstance().then((sp) {
       if (!sp.containsKey('access_token')) {
         Modular.to.pushNamedAndRemoveUntil('/login', (_) => false);
@@ -31,15 +31,29 @@ class _HomePageState extends State<HomePage> {
     return Scaffold(
       appBar: AppBar(
         title: const Text('Counter'),
+        actions: [
+          IconButton(
+            icon: const Icon(Icons.logout_sharp),
+            tooltip: 'Logoff',
+            onPressed: () async {
+              await homeStore.logoff();
+              Modular.to.pushNamedAndRemoveUntil('/login', (_) => false);
+            },
+          ),
+        ],
       ),
       body: Observer(
-        builder: (context) => Text('${store.counter}'),
+        builder: (context) => Center(
+            child: Text(
+          '${homeStore.counter}',
+          style: const TextStyle(fontSize: 28),
+        )),
       ),
       floatingActionButton: FloatingActionButton(
         onPressed: () {
-          store.increment();
+          homeStore.increment();
         },
-        child: Icon(Icons.add),
+        child: const Icon(Icons.add),
       ),
     );
   }

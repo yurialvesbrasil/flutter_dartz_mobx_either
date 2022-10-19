@@ -1,4 +1,5 @@
 import 'package:mobx/mobx.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 part 'home_store.g.dart';
 
@@ -10,5 +11,11 @@ abstract class HomeStoreBase with Store {
 
   Future<void> increment() async {
     counter = counter + 1;
+  }
+
+  @action
+  Future<void> logoff() async {
+    SharedPreferences sp = await SharedPreferences.getInstance();
+    sp.remove('access_token');
   }
 }

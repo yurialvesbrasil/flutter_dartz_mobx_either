@@ -5,7 +5,7 @@ FROM node:17.8.0
 WORKDIR /usr/src/app
 
 # A wildcard is used to ensure both package.json AND package-lock.json are copied
-COPY package*.json ./
+COPY package*.json yarn.lock ./
 
 # Install app dependencies
 RUN yarn install
@@ -17,13 +17,14 @@ COPY . .
 RUN yarn build
 
 # Configura o prisma
-RUN yarn prisma generate
+# RUN yarn prisma generate
 
 # Gera banco de dados
 # RUN yarn prisma migrate dev --name init
 
 # Roda testes unitários
-RUN yarn test
+# RUN yarn test
 
 # Start the server using the production build
-CMD [ "yarn", "start:prod" ]
+EXPOSE 3000
+CMD [ "yarn", "start" ]

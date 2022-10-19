@@ -25,6 +25,14 @@ mixin _$HomeStore on HomeStoreBase, Store {
     });
   }
 
+  late final _$logoffAsyncAction =
+      AsyncAction('HomeStoreBase.logoff', context: context);
+
+  @override
+  Future<void> logoff() {
+    return _$logoffAsyncAction.run(() => super.logoff());
+  }
+
   @override
   String toString() {
     return '''

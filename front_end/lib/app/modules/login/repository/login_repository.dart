@@ -13,8 +13,8 @@ class LoginRepositoryImpl extends LoginRepository {
   Future<Either<LoginFailure, String>> login(
       {required String login, required String password}) async {
     try {
-      final response = await Dio().post('http://localhost:3000/login',
-          data: {'login': login, 'password': password});
+      final response = await Dio().post('http://54.234.182.114:3000/login',
+          data: {"login": login, "password": password});
       return right(response.data['token']);
     } on DioError catch (e) {
       if (e.response?.statusCode == 403) {

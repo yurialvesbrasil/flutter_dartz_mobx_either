@@ -12,8 +12,8 @@ class LoginStore = _LoginStoreBase with _$LoginStore;
 
 abstract class _LoginStoreBase with Store {
   final LoginRepository _repository;
-  TextEditingController get loginContoller => TextEditingController();
-  TextEditingController get passwordController => TextEditingController();
+  TextEditingController loginContoller = TextEditingController();
+  TextEditingController passwordController = TextEditingController();
 
   @observable
   Option<LoginFailure> failure = none();
